@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .input_main {
+            padding: 10px 15px;
+        }
+
+        .btn {
+            background-color: brown;
+            padding: 12px 15px;
+            color: #fff;
+            outline: none;
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>Sözün palindrom olması</h3>
+    <input type="text" name="word" id="word" class="input_main" placeholder="Sözü daxil edin">
+    <button onclick="showresult()" class="btn">Yoxla</button>
+    <script>
+
+        function palindrom(str) {
+            var newString = "";
+            for (var i = str.length - 1; i >= 0; i--) {
+                newString += str[i];
+            }
+            return newString;
+        }
+        var showresult = () => {
+            var word = document.getElementById("word").value.toLowerCase();
+            var newstring = palindrom(word);
+            if (word === newstring) {
+                alert("palindromdur")
+            } else {
+                alert("palindrom deyil")
+            }
+            document.getElementById("word").value = "";
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            background-color: #f2f2f2;
+        }
+        .container h3{
+            color: rgb(58, 173, 54);
+            font-size: 32px;
+            font-weight:700;
+        }
+        .container span{
+            color: red;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h3>Arrayın prefixsinin tapılması</h3>
+    <span>Qeyd:Elementləri koddan dəyişdirə bilərsiz</span>
+    <ul id="demo"></ul>
+    <p id="prefix"></p>
+    </div>
+    <script>
+        array = ["alma", "Almaniya", "alnamaq", "albali"];
+        // example array
+        // array = ["Mahir", "Samir", "Elsad", "Sabir"];
+
+        function prefixfind(arr) {
+            var alfasortarray = arr.sort();
+            alfasortarray = alfasortarray.map(oneelement => oneelement.toLowerCase());
+            var alfafirst = alfasortarray[0];
+            var arrlastelem = alfasortarray[alfasortarray.length - 1];
+            var arrFirstElemLength = alfafirst.length;
+            var i = 0;
+            while (i < arrFirstElemLength && alfafirst.charAt(i) === arrlastelem.charAt(i)) {
+                i++;
+            }
+            return alfafirst.substring(0, i);
+        }
+        prefix = prefixfind(array);
+        document.getElementById("prefix").innerHTML = (prefix != "") ? "Prefix " + prefix : "Prefix yoxdur";
+        var listeelement = () => {
+            var li = "";
+            array.map(element => {
+                li += `
+      <li>${element}</li>      
+      `
+            })
+            document.getElementById("demo").innerHTML = li;
+        }
+        listeelement();
+    </script>
+
+</body>
+
+</html>

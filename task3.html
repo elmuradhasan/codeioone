@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var firstarray = [
+        { type: "A", value: "Bmw" },
+        { type: "B", value: "RangRover" },
+        { type: "C", value: "Infinitefx" },
+        { type: "A", value: "Kia" },
+        { type: "B", value: "Lexus" },
+        { type: "A", value: "Ford" },
+      ];
+      var output = [];
+      firstarray.forEach(function (item) {
+        //tekrarlanan obj nin tapilmasi
+        var existing = output.filter(function (element, index) {
+          return element.type == item.type;
+        });
+        if (existing.length) {
+          var existingnum = output.indexOf(existing[0]);
+          output[existingnum].value = output[existingnum].value.concat(
+            item.value
+          );
+        } else {
+          if (typeof item.value == "string") item.value = [item.value];
+          output.push(item);
+        }
+      });
+
+      console.dir(output);
+    </script>
+  </body>
+</html>
